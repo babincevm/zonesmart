@@ -1,7 +1,7 @@
 <template lang="pug">
 .main-layout
   v-header.main-layout__header
-  v-flex.main-layout__content(justify="center" align="center")
+  v-flex.main-layout__content(justify="center" align="flex-start")
     slot
 </template>
 

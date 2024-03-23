@@ -1,9 +1,9 @@
 <template lang="pug">
 v-text.v-button(is="button" :preset="textPreset" :color="text_color" :class="[`v-button--${color}`]" no-hover :disabled="disabled")
   v-flex(width="100%" height="min-content" gap="10" )
-    v-icon.v-button__icon.v-button__icon-prepend(v-if="prepend" name="prepend")
+    v-icon.v-button__icon.v-button__icon-prepend(v-if="prepend" :name="prepend" :size="iconSize")
     slot
-    v-icon.v-button__icon.v-button__icon-append(v-if="append" name="append")
+    v-icon.v-button__icon.v-button__icon-append(v-if="append" :name="append" :size="iconSize")
 </template>
 
 <script lang="ts">
@@ -25,6 +25,7 @@ export default defineComponent({
         append: String,
         disabled: Boolean,
         loading: Boolean,
+        iconSize: [Number, String],
         color: {
             type: String as PropType<TColor>,
             default: 'green' as TColor
@@ -36,7 +37,7 @@ export default defineComponent({
         textPreset: {
             type: String as PropType<TPresets>,
             default: 'button'
-        }
+        },
     },
     computed: {
         text_color(): TTextColor {

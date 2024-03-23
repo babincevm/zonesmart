@@ -22,7 +22,7 @@ export default defineComponent({
         },
         size: {
             type: [String, Number],
-            default: 16
+            default: 25
         },
         width: [String, Number],
         height: [String, Number]

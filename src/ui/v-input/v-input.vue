@@ -3,7 +3,8 @@ v-flex(
   column
   :class="['v-input', {\
     'v-input--with-prepend': prepend,\
-    'v-input--with-append': append\
+    'v-input--with-append': append,\
+    'v-input--thin': thin\
   }]"
   gap="8"
   align="flex-start"
@@ -24,7 +25,7 @@ v-flex(
       )
     input(
       v-model="model_proxy"
-      v-mask:[mask_options]="masked_proxy"
+      v-mask:[mask_options]="masked_value"
       ref="inputEl"
       :id="$.uid.toString()"
       :name="name"
@@ -63,9 +64,9 @@ v-flex(
 
 <script lang="ts">
 import { defineComponent, InputHTMLAttributes, PropType } from 'vue'
-import { Mask, MaskType, vMaska } from 'maska'
+import { MaskType, vMaska } from 'maska'
 
-import { IMask, isIMask, TColor, TInputmode, TModifiers, TType } from '@ui/v-input/types'
+import { IMask, isIMask, TColor, TInputmode, TType } from '@ui/v-input/types'
 
 import { TPresets } from '@ui/v-text/presets'
 import VIcon from '@ui/v-icon/v-icon.vue'
@@ -108,37 +109,14 @@ export default defineComponent({
         required: Boolean,
         noInputmode: Boolean,
         autofocus: Boolean,
-        disableInitialSuggestions: Boolean,
-        modelModifiers: {
-            type: Object as PropType<TModifiers>,
-            default: (otherProps: any) => {
-                if (!otherProps.mask) {
-                    return undefined
-                }
-
-                return {
-                    unmasked: true
-                }
-            }
-        }
-    },
-    watch: {
-        modelValue(v) {
-            if (!this.$props.mask || this.$props.modelModifiers?.masked) {
-                return
-            }
-
-            const maskInst = new Mask(this.mask_options)
-            this.masked_proxy.masked = maskInst.masked(v ?? '')
-            this.masked_proxy.unmasked = maskInst.unmasked(v ?? '')
-            this.masked_proxy.completed = maskInst.completed(v ?? '')
-        }
+        thin: Boolean,
+        disableInitialSuggestions: Boolean
     },
     data() {
         return {
             is_focused: false,
             is_readonly: false,
-            masked_proxy: {
+            masked_value: {
                 masked: '',
                 unmasked: '',
                 completed: false
@@ -177,17 +155,10 @@ export default defineComponent({
         },
         model_proxy: {
             get() {
-                if (!this.$props.mask || this.$props.modelModifiers?.masked) {
-                    return this.$props.modelValue ?? ''
-                }
-
-                return this.masked_proxy.masked
+                return this.$props.modelValue ?? ''
             },
             set(v: string) {
-                if (!this.$props.mask || this.$props.modelModifiers?.masked) {
-                    return this.$emit('update:modelValue', v)
-                }
-                this.$emit('update:modelValue', this.masked_proxy.unmasked)
+                this.$emit('update:modelValue', v)
             }
         }
     },
@@ -205,7 +176,7 @@ export default defineComponent({
             this.is_readonly = false
         }, 200)
     },
-    expose: ['focus']
+    expose: ['focus', 'masked_value']
 })
 </script>
 

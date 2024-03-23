@@ -1,0 +1,61 @@
+.v-products-table
+  border-collapse: collapse
+  width: 100%
+  table-layout: fixed
+  min-width: 1400px
+  border-color: rgba(0, 0, 0, .2)
+  border-bottom: 1px solid rgba(0, 0, 0, .2)
+
+  --v-image-width: 50px
+  --v-image-height: 50px
+  --v-input-width: 135px
+
+  & td, & th
+    display: table-cell
+
+  & tbody td:not(:first-child):not(&--double-left)
+    padding: 5px 10px
+
+  &--double-left
+    padding: 5px 10px 5px 20px
+
+  & thead
+    position: sticky
+    top: -40px
+    background-color: var(--white)
+    z-index: 1
+
+
+  &__item
+    &-art-number
+      display: flex
+      justify-content: flex-start
+      align-items: center
+      width: 100%
+      height: 100%
+
+    &-image
+      margin: 0 auto
+
+
+  &__header
+    &-actions
+      background-color: rgba(0, 0, 0, 0.14)
+
+      &-cell
+        padding: 15px 20px
+        &--small-padding
+          padding: 5px 10px
+
+      &-button
+        white-space: nowrap
+        padding: 7px 10px
+
+    &-titles
+      th:not(:first-child):not(&--double-left)
+        padding: 17px 10px
+      &--double-left
+        padding: 17px 10px 17px 20px
+
+  &__input-cell
+    padding-right: 10px

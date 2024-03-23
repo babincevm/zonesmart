@@ -2,11 +2,11 @@
   display: grid
   height: 100%
   grid-template-rows: [top] min-content [content] 1fr [bottom]
-  grid-template-columns: [left-edge] 40px [full-start] 120px [extended-start] 1fr [content-start] var(--content-size) [content-end] 1fr [extended-end] 12px [full-end] 40px [right-edge]
+  grid-template-columns: [left-edge] 40px [full-start] minmax(0, 120px) [extended-start] 1fr [content-start] var(--content-size) [content-end] 1fr [extended-end] minmax(0, 120px) [full-end] 40px [right-edge]
 
   &__header
     grid-row: top / content
-    grid-column: full-start / full-end
+    grid-column: left-edge / right-edge
 
 
   &__content
