@@ -25,11 +25,19 @@ module.exports = {
     SharedArrayBuffer: 'readonly'
   },
   ignorePatterns: ['.eslintrc.cjs'],
-  plugins: ['eslint-plugin-import', 'eslint-plugin-import-helpers'],
+  plugins: ['eslint-plugin-import', 'eslint-plugin-import-helpers', 'pug'],
 
   rules: {
+    'indent': ['error', 4],
     'no-param-reassign': 0,
     'vue/no-setup-props-destructure': 'off',
+    'vue/html-indent': ['error', 1, {
+      'attribute': 1,
+      'baseIndent': 0,
+      'closeBracket': 0,
+      'alignAttributesVertically': true,
+      'ignores': []
+    }],
     '@typescript-eslint/no-unused-vars': 'off',
     'no-prototype-builtins': 'off',
     'class-methods-use-this': 'off',

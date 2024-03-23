@@ -1,0 +1,37 @@
+.v-text
+  transition-property: var(--v-text-transition-prop, color)
+  transition-duration: var(--v-text-transition-duration, var(--transition-fast))
+
+  &--nowrap
+    white-space: nowrap
+
+
+  &--ellipsis
+    overflow: hidden
+    text-overflow: ellipsis
+
+
+  &--inline
+    --v-text-display: inline
+
+  &--green
+    --v-text-color: var(--green)
+
+  &--gray
+    --v-text-color: var(--gray)
+
+  &--black
+    --v-text-color: var(--black)
+
+  &--dark-blue
+    --v-text-color: var(--dark-blue)
+
+
+  display: var(--v-text-display, initial)
+  color: var(--v-text-color, inherit)
+  letter-spacing: var(--v-text-letter-spacing, initial)
+  text-align: var(--v-text-align, center)
+  text-decoration: var(--v-text-text-decoration, none)
+
+  @include font($font-size: var(--v-text-size, 16px), $line-height: var(--v-text-line-height, normal), $font-weight: var(--v-text-weight, normal), $font-style: var(--v-text-font-style, normal), $font-family: var(--v-text-font-family, inherit))
+

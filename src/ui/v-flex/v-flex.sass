@@ -1,0 +1,33 @@
+.v-flex
+  &--column
+    --v-flex-flex-direction: column
+
+
+  &--row
+    --v-flex-flex-direction: row
+
+
+  &--wrap
+    --v-flex-flex-wrap: wrap
+
+
+  &--inline
+    --v-flex-display: inline-flex
+
+  &--paper
+    padding: 40px
+    box-shadow: 0 6px 8px rgba(0, 0, 0, .16)
+    border-radius: 15px
+
+
+  flex-direction: var(--v-flex-flex-direction, row)
+  display: var(--v-flex-display, flex)
+  flex-wrap: var(--v-flex-flex-wrap, nowrap)
+  align-items: var(--v-flex-align, center)
+  justify-content: var(--v-flex-justify, center)
+  gap: var(--v-flex-gap, 0)
+  width: var(--v-flex-width, 100%)
+  height: var(--v-flex-height, 100%)
+  flex-shrink: var(--v-flex-shrink, initial)
+  flex-grow: var(--v-flex-grow, initial)
+

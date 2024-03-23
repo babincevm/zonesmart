@@ -1,0 +1,18 @@
+.main-layout
+  display: grid
+  height: 100%
+  grid-template-rows: [top] min-content [content] 1fr [bottom]
+  grid-template-columns: [left-edge] 40px [full-start] 120px [extended-start] 1fr [content-start] var(--content-size) [content-end] 1fr [extended-end] 12px [full-end] 40px [right-edge]
+
+  &__header
+    grid-row: top / content
+    grid-column: full-start / full-end
+
+
+  &__content
+    @include no-scroll
+
+    grid-row: content / bottom
+    grid-column: extended-start / extended-end
+    padding: 30px 0
+    overflow: auto
