@@ -7,6 +7,7 @@ component(
       {\
       'v-text--nowrap': props_proxy.nowrap,\
       'v-text--inline': props_proxy.inline,\
+      'v-text--no-hover': props_proxy.noHover,\
       'v-text--ellipsis': props_proxy.ellipsis,\
       [`v-text--${props_proxy.color}`]: props_proxy.color\
       }\
@@ -42,6 +43,7 @@ export default defineComponent({
         decoration: String as PropType<CSSProperties['textDecoration']>,
         color: String as PropType<TColor>,
         nowrap: Boolean,
+        noHover: Boolean,
         ellipsis: Boolean,
         inline: Boolean,
         preset: String as PropType<TPresets>

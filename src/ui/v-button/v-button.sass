@@ -1,0 +1,50 @@
+.v-button
+  width: min-content
+  padding: 17px 30px
+  border-radius: 6px
+  transition: background-color var(--transition-fast)
+
+  &--green
+    --v-button-background: var(--green)
+
+    &:hover
+      --v-button-background: rgb(91, 203, 182)
+
+    &:active
+      --v-button-background: rgb(79, 200, 176)
+
+
+  &--dark-blue
+    --v-button-background: var(--dark-blue)
+
+    &:hover
+      --v-button-background: rgb(22, 36, 52)
+
+    &:active
+      --v-button-background: rgb(21, 34, 49)
+
+  &--gray
+    --v-button-background: var(--button-gray)
+
+    &:hover
+      --v-button-background: rgb(230, 228, 232)
+
+    &:active
+      --v-button-background: rgb(218, 215, 221)
+
+
+  &--transparent
+    --v-button-background: none
+    border: 1px solid var(--gray)
+
+    &:hover
+      --v-button-background: rgba(0, 0, 0, .05)
+
+    &:active
+      --v-button-background: rgba(0, 0, 0, .1)
+
+  &[disabled]
+    --v-button-background: var(--button-gray)
+    cursor: initial
+
+  background-color: var(--v-button-background)

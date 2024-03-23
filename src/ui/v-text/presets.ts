@@ -12,6 +12,7 @@ export type TPresets =
   | 'link'
   | 'caption'
   | 'link-gray'
+  | 'button'
   ;
 
 type TTextProps = Omit<InstanceType<typeof VText>['$props'], 'preset'>
@@ -83,6 +84,13 @@ presets.set('link-gray', {
         weight: 400,
         lineHeight: 25,
         color: 'dark-blue'
+    }
+})
+presets.set('button', {
+    shared: {
+        size: 15,
+        weight: 600,
+        lineHeight: 15
     }
 })
 export default presets

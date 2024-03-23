@@ -17,6 +17,9 @@
   &--green
     --v-text-color: var(--green)
 
+  &--white
+    --v-text-color: var(--white)
+
   &--gray
     --v-text-color: var(--gray)
 
@@ -26,6 +29,11 @@
   &--dark-blue
     --v-text-color: var(--dark-blue)
 
+  a#{&}--green:not(&--no-hover):hover,
+  a#{&}--green:not(&--no-hover):hover,
+  button#{&}--dark-blue:not(&--no-hover):hover,
+  button#{&}--dark-blue:not(&--no-hover):hover
+    --v-text-color: var(--green-hover)
 
   display: var(--v-text-display, initial)
   color: var(--v-text-color, inherit)

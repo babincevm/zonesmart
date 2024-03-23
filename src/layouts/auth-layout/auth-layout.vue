@@ -1,7 +1,7 @@
 <template lang="pug">
 .auth-layout
   v-auth-header.auth-layout__header
-  .auth-layout__content
+  v-flex.auth-layout__content(justify="center" align="flex-start")
     slot
 </template>
 

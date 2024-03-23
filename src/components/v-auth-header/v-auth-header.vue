@@ -1,8 +1,8 @@
 <template lang="pug">
 v-flex.v-auth-header(is="header" justify="space-between" row)
   v-icon(name="logo" width="243" height="30" )
-  v-flex(width="min-content" gap="10" )
-    v-text(preset="caption" ) Поддержка
+  v-flex(width="min-content" gap="10" align="center" justify="flex-end" row)
+    v-text(preset="basic" color="gray" ) Поддержка
     v-text(is="button" color="dark-blue" )
       v-icon(name="telegram" size="30")
     v-text(is="button" color="dark-blue" )
