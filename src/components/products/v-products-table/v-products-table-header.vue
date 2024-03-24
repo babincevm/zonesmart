@@ -28,39 +28,39 @@ thead
 
     td.v-products-table__header-actions-cell--small-padding
       v-flex.v-products-table__input-cell(justify="center" align="center" )
-        v-input(placeholder="₽" v-model="minPrice" :mask="moneyMask" thin)
+        v-input(placeholder="₽" v-model="min_price" :mask="money_mask" thin)
 
     td.v-products-table__header-actions-cell--small-padding
       v-flex.v-products-table__input-cell(justify="center" align="center" )
-        v-input(placeholder="₽" v-model="maxPrice" :mask="moneyMask" thin)
+        v-input(placeholder="₽" v-model="max_price" :mask="money_mask" thin)
 
     td.v-products-table__header-actions-cell
 
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
 
-import { moneyMask } from '@helpers/masks'
+import { money_mask } from '@helpers/masks';
 
-import VSort from '@ui/v-sort/v-sort.vue'
-import VText from '@ui/v-text/v-text.vue'
-import VFlex from '@ui/v-flex/v-flex.vue'
-import VButton from '@ui/v-button/v-button.vue'
-import VInput from '@ui/v-input/v-input.vue'
-import VCheckbox from '@ui/v-checkbox/v-checkbox.vue'
+import VSort from '@ui/v-sort/v-sort.vue';
+import VText from '@ui/v-text/v-text.vue';
+import VFlex from '@ui/v-flex/v-flex.vue';
+import VButton from '@ui/v-button/v-button.vue';
+import VInput from '@ui/v-input/v-input.vue';
+import VCheckbox from '@ui/v-checkbox/v-checkbox.vue';
 
 export default defineComponent({
-    name: 'VProductsTableHeader',
-    components: { VCheckbox, VInput, VButton, VFlex, VText, VSort },
-    data() {
-        return {
-            moneyMask,
-            minPrice: '',
-            maxPrice: ''
-        }
-    }
-})
+  name: 'VProductsTableHeader',
+  components: { VCheckbox, VInput, VButton, VFlex, VText, VSort },
+  data() {
+    return {
+      money_mask,
+      min_price: '',
+      max_price: ''
+    };
+  }
+});
 </script>
 
 <style lang="sass" scoped src="./v-products-table.sass"></style>

@@ -24,7 +24,9 @@
   &--with-append
     --v-input-padding-right: calc(var(--v-input-base-padding-h) + 25px + 5px)
 
-
+  &__skeleton
+    --v-skeleton-width: var(--v-input-width, 100%)
+    --v-skeleton-height: var(--v-input-height, 50px)
 
   & input
     @include font($font-size: 15px, $line-height: 25px)
@@ -49,8 +51,6 @@
 
   &__prepend
     left: var(--v-input-base-padding-h)
-    color: var(--v-input-prepend-color, var(--v-input-icon-color, inherit))
 
   &__append
     right: var(--v-input-base-padding-h)
-    color: var(--v-input-append-color, var(--v-input-icon-color, inherit))

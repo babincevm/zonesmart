@@ -1,44 +1,36 @@
-import { onUnmounted, ref } from 'vue'
+import { ComponentOptionsMixin } from 'vue';
 
 type TRequestID = string | number | null;
 
-interface IUseAbortSignal {
-  requestStart: (requestId?: TRequestID) => AbortSignal;
-  requestEnd: (requestId?: TRequestID) => void;
-  abort: (requestId?: TRequestID) => void;
-}
-
-export const useSignal = (): IUseAbortSignal => {
-    const controllers = ref(new Map<TRequestID, AbortController>())
-
-    const requestStart = (requestId: TRequestID = null): AbortSignal => {
-        controllers.value.set(requestId, new AbortController())
-        const signal = controllers.value.get(requestId)?.signal
-        if (!signal) {
-            throw new Error('???')
-        }
-        return signal
-    }
-
-    const requestEnd = (requestId: TRequestID = null) => {
-        controllers.value.delete(requestId)
-    }
-
-    const abort = (requestId: TRequestID = null) => {
-        controllers.value.get(requestId)?.abort()
-    }
-
-    const abortAll = () => {
-        controllers.value.forEach((controller: AbortController) => {
-            controller.abort()
-        })
-    }
-
-    onUnmounted(abortAll)
-
+export const useSignal: ComponentOptionsMixin = {
+  data() {
     return {
-        requestStart,
-        requestEnd,
-        abort
+      controllers: new Map<TRequestID, AbortController>()
+    };
+  },
+  methods: {
+    requestStart(request_id: TRequestID = null): AbortSignal {
+      this.controllers.set(request_id, new AbortController());
+      const signal = this.controllers.get(request_id)?.signal;
+      if (!signal) {
+        throw new Error('???');
+      }
+      return signal;
+    },
+    requestEnd(request_id: TRequestID = null) {
+      // ts0ignore
+      this.controllers.delete(request_id);
+    },
+    abort(request_id: TRequestID = null) {
+      this.controllers.get(request_id)?.abort();
+    },
+    abortAll() {
+      this.controllers.forEach((controller: AbortController) => {
+        controller.abort();
+      });
     }
-}
+  },
+  unmounted() {
+    this.abortAll();
+  }
+};

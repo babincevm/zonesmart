@@ -16,24 +16,31 @@
 
   &--green
     --v-text-color: var(--green)
+    &-hover:hover
+      --v-text-color: var(--green-hover)
+    &-active:active
+      --v-text-color: var(--green-active)
 
   &--white
     --v-text-color: var(--white)
 
   &--gray
     --v-text-color: var(--gray)
+    &-hover:hover
+      --v-text-color: var(--gray-hover)
+    &-active:active
+      --v-text-color: var(--gray-active)
 
   &--black
     --v-text-color: var(--black)
 
   &--dark-blue
     --v-text-color: var(--dark-blue)
+    &-hover:hover
+      --v-text-color: var(--dark-blue-hover)
+    &-active:active
+      --v-text-color: var(--dark-blue-active)
 
-  a#{&}--green:not(&--no-hover):hover,
-  a#{&}--green:not(&--no-hover):hover,
-  button#{&}--dark-blue:not(&--no-hover):hover,
-  button#{&}--dark-blue:not(&--no-hover):hover
-    --v-text-color: var(--green-hover)
 
   display: var(--v-text-display, initial)
   color: var(--v-text-color, inherit)

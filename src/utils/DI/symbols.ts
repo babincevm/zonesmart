@@ -1,4 +1,4 @@
 export const DISymbols = {
-    API: Symbol('API'),
-    RequestBuilder: Symbol('RequestBuilder')
-} as const
+  API: Symbol('API'),
+  Request: Symbol('Request')
+} as const;

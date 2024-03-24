@@ -1,0 +1,39 @@
+.v-skeleton
+  background-color: var(--skeleton) !important
+  overflow: hidden !important
+  position: relative !important
+
+  &--rounded
+    --v-skeleton-border-radius: 50%
+
+
+  width: var(--v-skeleton-width, 100%)
+  height: var(--v-skeleton-height, 100%)
+  border-radius: var(--v-skeleton-border-radius, 6px)
+
+  &::before
+    position: absolute
+    content: ''
+    top: 0
+    bottom: 0
+    left: 0
+    transform: translateX(-100%)
+    width: 100%
+    background: var(--skeleton-shine)
+    animation-delay: 2000ms
+    animation-timing-function: ease-out
+    animation-iteration-count: infinite
+    animation-duration: 3000ms
+    animation-name: shine
+
+
+@keyframes shine
+  0%
+    transform: translateX(-100%)
+
+
+  33%,
+  100%
+    transform: translateX(100%)
+
+
