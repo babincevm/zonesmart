@@ -5,17 +5,18 @@
  */
 
 export const pixelify = (
-  maybe_string_or_number: string | number | undefined,
-  default_value: string | undefined = undefined
+    maybe_string_or_number: string | number | undefined,
+    default_value: string | undefined = undefined
 ): string | undefined => {
-  if (maybe_string_or_number === undefined) {
-    return default_value;
-  }
-  if (typeof maybe_string_or_number === 'number') {
-    return `${maybe_string_or_number}px`;
-  }
-  if (isNaN(Number(maybe_string_or_number))) {
-    return maybe_string_or_number;
-  }
-  return `${maybe_string_or_number}px`;
-};
+    if (maybe_string_or_number === undefined) {
+        return default_value
+    }
+    if (typeof maybe_string_or_number === 'number') {
+        return `${maybe_string_or_number}px`
+    }
+    if (isNaN(Number(maybe_string_or_number))) {
+        return maybe_string_or_number
+    }
+    return `${maybe_string_or_number}px`
+}
+

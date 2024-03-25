@@ -7,7 +7,7 @@ auth-layout
       v-text(preset="link" as="a" href="#") Зарегистрироваться
 
     v-flex(column gap="20" width="100%" )
-      v-input(v-model="email" label="Email" placeholder="yourmail@mail.ru" type="email" :loading="is_loading" @submit="authenticate")
+      v-input(v-model="email" label="Email" placeholder="yourmail@mail.ru" type="email" :loading="is_loading" @submit="authenticate" :error="Boolean(v$.email.$error)" :error-text="v$.email.$errors[0]?.$message")
       v-flex(column gap="10")
         v-input.auth__form-password(
           v-model="password"
@@ -77,6 +77,9 @@ export default defineComponent({
     methods: {
         ...mapActions('auth', ['login']),
         async authenticate() {
+            if (!await this.v$.$validate()) {
+                return
+            }
             this.is_loading = true
             const login_result = await this.login({
                 data: {

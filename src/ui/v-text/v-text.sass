@@ -1,6 +1,5 @@
 .v-text
-  transition-property: var(--v-text-transition-prop, color)
-  transition-duration: var(--v-text-transition-duration, var(--transition-fast))
+  transition: var(--v-text-transition-prop, color) var(--v-text-transition-duration, var(--transition-fast))
 
   &--nowrap
     white-space: nowrap
@@ -23,6 +22,9 @@
 
   &--white
     --v-text-color: var(--white)
+
+  &--red
+    --v-text-color: var(--error)
 
   &--gray
     --v-text-color: var(--gray)

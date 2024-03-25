@@ -1,1 +1,1 @@
-export type TState = 'asc' | 'desc'
+export type TSortOrder = 'asc' | 'desc'

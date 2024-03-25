@@ -62,10 +62,9 @@ v-flex(
 
   v-text.v-input__error(
     v-if="error && errorText"
-    size="16"
-    line-height="21"
-    ellipsis
-    nowrap
+    preset="basic"
+    color="red"
+    align="left"
   ) {{ errorText }}
 
 </template>
@@ -88,7 +87,7 @@ export default defineComponent({
     components: { VSkeleton, VFlex, VText, VIcon, VFragment },
     emits: ['update:modelValue', 'submit', 'append-click', 'prepend-click', 'blur'],
     directives: { mask: vMaska },
-    expose: ['masked_value'],
+    expose: ['masked_value', 'focus'],
     props: {
         modelValue: String,
         type: {
@@ -204,8 +203,7 @@ export default defineComponent({
         setTimeout(() => {
             this.is_readonly = false
         }, 200)
-    },
-    expose: ['focus', 'masked_value']
+    }
 })
 </script>
 

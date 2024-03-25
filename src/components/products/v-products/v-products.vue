@@ -29,7 +29,7 @@ import VText from '@ui/v-text/v-text.vue'
 import VIcon from '@ui/v-icon/v-icon.vue'
 import VSkeleton from '@ui/v-skeleton/v-skeleton.vue'
 
-import VProductsAdd from '@components/products/v-products-create/v-products-add.vue'
+import VProductsAdd from '@components/products/v-products-add/v-products-add.vue'
 import VProductsTable from '@components/products/v-products-table/v-products-table.vue'
 import VPagination from '@components/v-pagination/v-pagination.vue'
 
@@ -37,6 +37,11 @@ export default defineComponent({
     name: 'VProducts',
     components: { VPagination, VSkeleton, VProductsTable, VProductsAdd, VIcon, VText, VFlex },
     mixins: [useSignal],
+    data() {
+        return {
+            pagination: 1
+        }
+    },
     computed: {
         ...mapGetters(['is_loading']),
         ...mapState('products', ['total_amount', 'products']),
@@ -44,15 +49,10 @@ export default defineComponent({
             return (this.is_loading as (loaderId: string) => boolean)(EProductLoaders.LIST)
         }
     },
-    data() {
-        return {
-            pagination: 1
-        }
-    },
     methods: {
         ...mapActions('products', ['fetchProducts']),
-        changePaginationPage() {
-            this.pagination++
+        changePaginationPage(page: number) {
+            this.pagination = page
             this.fetchItems()
         },
         async fetchItems() {

@@ -22,6 +22,7 @@
     "allowJs": true,
     /* Linting */
     "strict": true,
+    "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,

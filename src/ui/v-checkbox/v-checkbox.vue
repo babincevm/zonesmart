@@ -2,7 +2,8 @@
 .v-checkbox(:class="{'v-checkbox--labeled': $slots.default, 'v-checkbox--disabled': disabled, 'v-checkbox--checked': is_checked}")
   v-flex.v-checkbox__input-container
     input( type="checkbox" :name="name" :id="String($.uid)" v-model="checked_proxy" :disabled="disabled" v-indeterminate="is_indeterminate" :aria-checked="aria_checked")
-    v-icon.v-checkbox__icon(v-if="state_icon" :name="state_icon" width="9" height="8" color="white" )
+    transition(name="checkbox-scale" duration="300")
+      v-icon.v-checkbox__icon(v-if="state_icon" :name="state_icon" width="9" height="8" color="white" )
   label( :for="String($.uid)" v-if="$slots.default")
     slot
 </template>
@@ -69,4 +70,24 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped src="./v-checkbox.sass"></style>
+<style lang="sass" scoped src="./v-checkbox.sass"></style>
+<style lang="sass">
+.checkbox-scale-enter-active,
+.checkbox-scale-leave-active
+  --v-text-transition-prop: transform
+
+
+.checkbox-scale-enter
+  &-from
+    transform: scale(0)
+
+  &-to
+    transform: scale(1)
+
+.checkbox-scale-leave
+  &-from
+    transform: scale(1)
+
+  &-to
+    transform: scale(0)
+</style>
