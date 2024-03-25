@@ -1,0 +1,1 @@
+import{a as o}from"./runtime-tq9aMXk4.js";o('<symbol xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25" id="arrow"><path stroke="currentColor" d="m7 10 5.5 5 5.5-5" /></symbol>',"arrow");const t="arrow",a={width:25,height:25};export{t as default,a as size};

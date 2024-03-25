@@ -1,0 +1,1 @@
+import{a as o}from"./runtime-tq9aMXk4.js";o('<symbol xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 11" id="check"><path stroke="currentColor" stroke-width="2" d="m1 6 3.95 3L11 1" /></symbol>',"check");const e="check",c={width:12,height:11};export{e as default,c as size};

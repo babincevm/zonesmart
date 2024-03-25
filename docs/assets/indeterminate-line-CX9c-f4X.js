@@ -1,0 +1,1 @@
+import{a as e}from"./runtime-tq9aMXk4.js";e('<symbol xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 9 3" id="indeterminate-line"><path stroke="currentColor" stroke-width="2" d="M0 1.5h9" /></symbol>',"indeterminate-line");const i="indeterminate-line",n={width:9,height:3};export{i as default,n as size};
