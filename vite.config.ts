@@ -20,14 +20,14 @@ export default defineConfig({
             symbolId: '[name]'
         })
     ],
-    server: {
-        proxy: {
-            '/api': {
-                target: 'https://dev-ar.zonesmart.com',
-                changeOrigin: true
-            }
-        }
-    },
+    // server: {
+    //     proxy: {
+    //         '/api': {
+    //             target: 'https://dev-ar.zonesmart.com',
+    //             changeOrigin: true
+    //         }
+    //     }
+    // },
     css: {
         preprocessorOptions: {
             sass: {

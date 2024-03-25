@@ -7,15 +7,15 @@ import { IErrorHandler } from '@services/ErrorHandler/types'
 
 const axios_instance = axios.create({
     baseURL: 'https://dev-ar.zonesmart.com/api',
-    withCredentials: true,
+    withCredentials: false,
     headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
         common: {
             'X-Requested-With': 'XMLHttpRequest'
         }
     }
 })
+
 axios_instance.interceptors.response.use((response) => response, (error) => {
     const axios_error = error as AxiosError
     if (axios_error.response?.status !== 401) {
