@@ -1,5 +1,6 @@
 export enum EAuthLoaders {
-  LOGIN = 'login'
+  LOGIN = 'login',
+  TOKEN_REFRESH = 'token_refresh'
 }
 
 export interface IAuthState {

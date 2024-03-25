@@ -1,5 +1,5 @@
 <template lang="pug">
-v-text.v-sort(is="button" preset="basic" color="gray" @click="$emit('click')")
+v-text.v-sort(as="button" preset="basic" color="gray" @click="$emit('click')")
   slot
   v-icon(name="arrow")
 </template>

@@ -1,8 +1,11 @@
 .v-button
-  width: min-content
   padding: 17px 30px
   border-radius: 6px
   transition: background-color var(--transition-fast)
+
+  &--thin
+    --v-button-height: 30px
+    padding: 7px 12px
 
   &--green
     --v-button-background: var(--green)
@@ -47,4 +50,10 @@
     --v-button-background: var(--button-gray)
     cursor: initial
 
+  &--no-border
+    border: none
+
   background-color: var(--v-button-background)
+  height: var(--v-button-height, min-content)
+  width: var(--v-button-width, max-content)
+

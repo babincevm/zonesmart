@@ -1,8 +1,9 @@
-import { IRequestOptions, IResponse } from '@services/api/Base/types';
+import { IRequestOptions, IResponse } from '@services/api/Base/types'
 
-export interface IAuth {
+export interface IAuthAPI {
   login(payload: IAuthData, options?: IRequestOptions): Promise<IResponse<ITokenResponse>>;
-  refresh(token: string): Promise<IResponse<unknown>>;
+
+  refresh(token: string): Promise<IResponse<IRefreshTokenResponse>>;
 }
 
 export interface IAuthData {
@@ -13,4 +14,8 @@ export interface IAuthData {
 export interface ITokenResponse {
   access: string;
   refresh: string;
+}
+
+export interface IRefreshTokenResponse {
+  access: string;
 }

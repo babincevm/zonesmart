@@ -8,16 +8,16 @@ v-flex.v-auth-header(is="header" justify="space-between" row)
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from 'vue'
 
-import VIcon from '@ui/v-icon/v-icon.vue';
-import VFlex from '@ui/v-flex/v-flex.vue';
-import VText from '@ui/v-text/v-text.vue';
+import VIcon from '@ui/v-icon/v-icon.vue'
+import VFlex from '@ui/v-flex/v-flex.vue'
+import VText from '@ui/v-text/v-text.vue'
 
 export default defineComponent({
-  name: 'VAuthHeader',
-  components: { VText, VFlex, VIcon }
-});
+    name: 'VAuthHeader',
+    components: { VText, VFlex, VIcon }
+})
 </script>
 
 <style lang="sass" scoped src="./v-auth-header.sass"></style>

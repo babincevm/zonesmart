@@ -1,13 +1,16 @@
-import { IAuthState } from '@store/auth/types';
+import { IAuthState } from '@store/auth/types'
+import { IProductState } from '@store/products/types'
 
-export interface IStoreOptions {
+type TOptionsExtensions = TStoreWithPagination;
+
+export type IStoreOptions<T extends TOptionsExtensions | unknown = unknown> = T & {
   signal?: AbortSignal;
   loader_id?: string;
 }
 
-export interface IActionPayload<TData = unknown> {
+export interface IActionPayload<TData = unknown, TOptionsExtension extends TOptionsExtensions | unknown = unknown> {
   data?: TData;
-  options?: IStoreOptions;
+  options?: IStoreOptions<TOptionsExtension>;
 }
 
 export interface IState {
@@ -16,4 +19,10 @@ export interface IState {
 
 export type TGlobalState = IState & {
   auth: IAuthState;
+  products: IProductState;
 };
+
+export type TStoreWithPagination = {
+  page: number;
+  per_page: number;
+}

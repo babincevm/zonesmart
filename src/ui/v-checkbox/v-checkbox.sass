@@ -9,9 +9,14 @@
   width: var(--v-checkbox-width, min-content)
   height: var(--v-checkbox-height, min-content)
 
-  & input
+  &__input-container
     width: 19px
     height: 19px
+    position: relative
+
+  & input
+    width: 100%
+    height: 100%
     border-radius: 6px
     overflow: hidden
     appearance: none
@@ -30,32 +35,14 @@
     &:disabled
       cursor: initial
 
-      & ~ label
-        cursor: initial
 
+  &--disabled label
+    cursor: initial
 
-    &::before
-      content: url('data:image/svg+xml,<svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6L4.95 9L11 1" stroke="white" stroke-width="2"/></svg>')
-      left: 0
-      top: 0
-      width: 100%
-      height: 100%
-      position: absolute
-      display: flex
-      justify-content: center
-      align-items: center
-      transform: scale(0)
-      opacity: 0
-      transition: transform var(--transition-fast), opacity var(--transition-fast)
-
-
-    &:checked
+  &--checked
+    & input
       background-color: var(--green)
       border-width: 0
-
-      &::before
-        transform: scale(1)
-        opacity: 1
 
       &:hover
         background-color: rgb(91, 203, 182)
@@ -63,6 +50,25 @@
       &:active
         background-color: rgb(79, 200, 176)
 
+  &--checked &__icon
+    transform: scale(1)
+    opacity: 1
+
+
+  &__icon
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    position: absolute
+    display: flex
+    justify-content: center
+    align-items: center
+    transform: scale(0)
+    opacity: 0
+    transition: transform var(--transition-fast), opacity var(--transition-fast)
+    pointer-events: none
+    z-index: 1
 
   & label
     cursor: pointer

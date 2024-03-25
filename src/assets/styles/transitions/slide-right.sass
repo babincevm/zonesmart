@@ -12,7 +12,9 @@
   z-index: 9999
 
 .slide-right-leave-active
-  transition: opacity .45s linear
+  transition: opacity .45s linear, transform .45s
+  transform-origin: center center
+
 
 .slide-right
   &-enter
@@ -27,8 +29,10 @@
   &-leave
     &-from
       opacity: 1
+      transform: scale(1)
 
 
     &-to
       opacity: 0
+      transform: scale(.5)
 

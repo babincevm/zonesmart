@@ -1,61 +1,70 @@
 .v-products-table
-  border-collapse: collapse
-  width: 100%
-  table-layout: fixed
   min-width: 1400px
-  border-color: rgba(0, 0, 0, .2)
-  border-bottom: 1px solid rgba(0, 0, 0, .2)
+  position: relative
 
-  --v-image-width: 50px
-  --v-image-height: 50px
-  --v-input-width: 135px
+  &__row
+    display: grid
+    width: 100%
+    column-gap: 20px
+    grid-template-columns: [checkbox] 25px [image] 50px [art-number] 132px [brand] 125px [title] 1fr [quantity] 116px [price] 125px [min-price] 170px [max-price] 170px [remove] 57px [end]
+    grid-template-rows: 49px
+    align-items: center
+    justify-items: center
+    padding: 5px 6px
 
-  & td, & th
-    display: table-cell
-
-  & tbody td:not(:first-child):not(&--double-left)
-    padding: 5px 10px
-
-  &--double-left
-    padding: 5px 10px 5px 20px
-
-  & thead
-    position: sticky
-    top: -40px
-    background-color: var(--white)
-    z-index: 1
-
-
-  &__item
-    &-art-number
-      display: flex
-      justify-content: flex-start
-      align-items: center
+    & > *
+      overflow: hidden
       width: 100%
-      height: 100%
 
-    &-image
-      margin: 0 auto
+    &-item
+      border-bottom: 1px solid rgba(0, 0, 0, .2)
+      --v-image-width: 50px
+      --v-image-height: 50px
+
+      &-input
+        padding: 1px 36px 1px 1px
+
+      &-text
+        width: 100%
 
 
   &__header
+    position: sticky
+    top: -40px
+    background-color: var(--white)
+    z-index: 3
+
+    &-input
+      padding: 1px 36px 1px 1px
+
     &-actions
-      background-color: rgba(0, 0, 0, 0.14)
+      background-color: rgba(0, 0, 0, .14)
+      border-top: 1px solid rgba(0, 0, 0, .2)
+      border-bottom: 1px solid rgba(0, 0, 0, .2)
+      max-height: 60px
+      overflow: hidden
+      transition: max-height var(--transition-fast), padding var(--transition-fast), border-width var(--transition-fast)
 
-      &-cell
-        padding: 15px 20px
-        &--small-padding
-          padding: 5px 10px
+      &--hidden
+        max-height: 0
+        padding: 0 6px
+        border-bottom-width: 0
 
-      &-button
-        white-space: nowrap
-        padding: 7px 10px
+      &-buttons
+        padding: 0 20px
+        grid-column: checkbox / quantity
 
-    &-titles
-      th:not(:first-child):not(&--double-left)
-        padding: 17px 10px
-      &--double-left
-        padding: 17px 10px 17px 20px
+    &-text
+      width: 100%
+      grid-column: quantity / min-price
 
-  &__input-cell
-    padding-right: 10px
+    &-min-price
+      grid-column: min-price / max-price
+
+    &-max-price
+      grid-column: max-price / remove
+
+  &__pagination
+    margin-top: 20px
+
+    margin-left: auto

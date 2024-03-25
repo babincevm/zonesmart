@@ -1,5 +1,4 @@
 .v-input
-  width: 100%
   --v-input-base-padding-h: 20px
 
   &__container
@@ -28,10 +27,12 @@
     --v-skeleton-width: var(--v-input-width, 100%)
     --v-skeleton-height: var(--v-input-height, 50px)
 
+  --v-flex-width: var(--v-input-width, 100%)
+
   & input
     @include font($font-size: 15px, $line-height: 25px)
 
-    width: var(--v-input-width, 100%)
+    width: 100%
     height: var(--v-input-height, 50px)
     text-align: var(--v-input-text-align, left)
     background-color: var(--v-input-background, var(--button-gray))

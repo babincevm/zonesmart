@@ -5,23 +5,23 @@ router-view(v-slot="{Component}")
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from 'vue'
 
-import VFragment from './ui/v-fragment/v-fragment.vue';
+import VFragment from './ui/v-fragment/v-fragment.vue'
 
 export default defineComponent({
-  name: 'App',
-  components: { VFragment },
-  data() {
-    return {
-      duration: 0
-    };
-  },
-  mounted() {
+    name: 'App',
+    components: { VFragment },
+    data() {
+        return {
+            duration: 0
+        }
+    },
+    mounted() {
     // Убираю анимацию при появлении компонента после загрузки страницы
-    setTimeout(() => {
-      this.duration = 450;
-    }, 500);
-  }
-});
+        setTimeout(() => {
+            this.duration = 450
+        }, 1000)
+    }
+})
 </script>
