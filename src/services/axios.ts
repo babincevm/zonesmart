@@ -6,7 +6,7 @@ import store from '@/store'
 import { IErrorHandler } from '@services/ErrorHandler/types'
 
 const axios_instance = axios.create({
-    baseURL: '/api',
+    baseURL: 'https://dev-ar.zonesmart.com/api',
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json',
