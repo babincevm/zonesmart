@@ -8,7 +8,7 @@ import axios_instance from '@services/axios'
 export class ErrorHandler implements IErrorHandler {
     static refresh_promise: Promise<boolean> | null = null
 
-    private RefreshToken(): Promise<boolean> {
+    private refreshToken(): Promise<boolean> {
         if (ErrorHandler.refresh_promise !== null) {
             return ErrorHandler.refresh_promise
         }
@@ -23,8 +23,8 @@ export class ErrorHandler implements IErrorHandler {
         return ErrorHandler.refresh_promise as Promise<boolean>
     }
 
-    public async HandleUnauthenticated(axios_config: AxiosRequestConfig): Promise<false | AxiosResponse<any, any>> {
-        const refresh_result = await this.RefreshToken()
+    public async handleUnauthenticated(axios_config: AxiosRequestConfig): Promise<false | AxiosResponse<any, any>> {
+        const refresh_result = await this.refreshToken()
         if (!refresh_result) {
             return Promise.reject()
         }

@@ -54,8 +54,8 @@ export default defineComponent({
     setup: () => ({ v$: useVuelidate() }),
     data() {
         return {
-            email: 'candid8@zonesmart.ru',
-            password: '4815162342',
+            email: '',
+            password: '',
             is_password_visible: false,
             is_loading: false
         }

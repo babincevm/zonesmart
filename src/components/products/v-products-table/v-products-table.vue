@@ -25,11 +25,6 @@ export default defineComponent({
     name: 'VProductsTable',
     components: { VText, VPagination, VProductsTableRow, VFlex, VProductsTableHeader },
     emits: ['update:pagination'],
-    data() {
-        return {
-            sort: undefined as TFieldSort | undefined
-        }
-    },
     props: {
         pagination: {
             type: Number,
@@ -38,6 +33,11 @@ export default defineComponent({
         per_page: {
             type: Number,
             default: 10
+        }
+    },
+    data() {
+        return {
+            sort: undefined as TFieldSort | undefined
         }
     },
     computed: {

@@ -45,15 +45,15 @@ import VCheckbox from '@ui/v-checkbox/v-checkbox.vue'
 export default defineComponent({
     name: 'VProductsTableHeader',
     components: { VCheckbox, VInput, VButton, VFlex, VText, VSort },
+    props: {
+        sort: String as PropType<TFieldSort | undefined>
+    },
     data() {
         return {
             money_mask,
             min_price_model: '',
             max_price_model: ''
         }
-    },
-    props: {
-        sort: String as PropType<TFieldSort | undefined>
     },
     computed: {
         ...mapState('products', ['changed_data', 'products', 'selected_products']),

@@ -31,7 +31,7 @@ axios_instance.interceptors.response.use((response) => response, (error) => {
         return store.dispatch('auth/logout')
     }
 
-    return DIContainer.GetService<IErrorHandler>(DISymbols.ErrorHandler).HandleUnauthenticated(axios_error.config)
+    return DIContainer.GetService<IErrorHandler>(DISymbols.ErrorHandler).handleUnauthenticated(axios_error.config)
 })
 
 export default axios_instance

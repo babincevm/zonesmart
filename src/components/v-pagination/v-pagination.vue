@@ -17,8 +17,8 @@ v-skeleton(:loading="loading" width="480" height="40" v-if="total > 1")
         v-button.v-pagination__button(color="transparent" no-border text-preset="basic" @click="setPage(1)" :disabled="disabled") 1
 
       //// Выводим 2 если страница пагинации 5 (т.к. расчитываю только по 2 страницы слева/справа, а если не выводить 3 точки, то нужно 3 странциы)
-      //li(v-if="+page === 5")
-      //  v-button.v-pagination__button(color="transparent" no-border text-preset="basic" @click="setPage(2)" :disabled="disabled") 2
+      li(v-if="+page === 5")
+        v-button.v-pagination__button(color="transparent" no-border text-preset="basic" @click="setPage(2)" :disabled="disabled") 2
 
       li(v-if="should_collapse_left")
         v-button.v-pagination__button(color="transparent" no-border text-preset="basic" @click="setLeftHalf" :disabled="disabled") ...
@@ -59,7 +59,7 @@ v-skeleton(:loading="loading" width="480" height="40" v-if="total > 1")
 <script lang="ts">
 import { CSSProperties, defineComponent, PropType } from 'vue'
 
-import { clamp } from '@helpers/math'
+import { clamp, inverseLerp } from '@helpers/math'
 
 import VFlex from '@ui/v-flex/v-flex.vue'
 import VButton from '@ui/v-button/v-button.vue'
@@ -87,7 +87,7 @@ export default defineComponent({
     },
     computed: {
         page(): number {
-            return clamp(1, this.$props.total, this.$props.modelValue)
+            return clamp(1, Number(this.$props.total), Number(this.$props.modelValue))
         },
         should_collapse() {
             return this.total > 7
@@ -99,10 +99,10 @@ export default defineComponent({
             return this.should_collapse && this.page < this.$props.total - 4
         },
         visible_buttons_amount_left(): number {
-            return clamp(0, 2, this.page - 2)
+            return clamp(0, 2, this.page - 2) + inverseLerp(this.$props.total - 2, this.$props.total, this.page) * 2
         },
         visible_buttons_amount_right(): number {
-            return clamp(0, 2, this.$props.total - this.page - 1)
+            return clamp(0, 2, this.$props.total - this.page - 1) + clamp(0, 2, 3 - this.page)
         }
     },
     methods: {

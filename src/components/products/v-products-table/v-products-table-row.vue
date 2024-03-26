@@ -40,17 +40,17 @@ import VImage from '@ui/v-image/v-image.vue'
 export default defineComponent({
     name: 'VProductsTableRow',
     components: { VImage, VInput, VText, VIcon, VFlex, VCheckbox },
+    props: {
+        productId: {
+            type: String as PropType<IProduct['id']>,
+            required: true
+        }
+    },
     data() {
         return {
             min_price: '',
             max_price: '',
             money_mask
-        }
-    },
-    props: {
-        productId: {
-            type: String as PropType<IProduct['id']>,
-            required: true
         }
     },
     computed: {

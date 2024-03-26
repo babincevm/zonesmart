@@ -1,7 +1,6 @@
 <template lang="pug">
 v-flex.v-header(is="header" justify="space-end" align="center" width="100%" )
   v-flex(gap="30" justify="flex-end" align="center" row)
-    v-text(as="button" @click="logout") Logout
     v-icon(name="notifications" size="25" button color="gray" hover-color="gray" active-color="gray" )
     v-dropdown(:options="user_options" v-model="selected_user")
 
@@ -9,7 +8,6 @@ v-flex.v-header(is="header" justify="space-end" align="center" width="100%" )
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { mapActions } from 'vuex'
 
 import { IOption } from '@ui/v-dropdown/types'
 
@@ -27,9 +25,6 @@ export default defineComponent({
             selected_user: 'user1'
         }
     },
-    methods: {
-        ...mapActions('auth', ['logout'])
-    }
 })
 </script>
 
