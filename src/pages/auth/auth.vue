@@ -7,7 +7,7 @@ auth-layout
       v-text(preset="link" as="a" href="#") Зарегистрироваться
 
     v-flex(column gap="20" width="100%" )
-      v-input(v-model="email" label="Email" placeholder="yourmail@mail.ru" type="email" :loading="is_loading" @submit="authenticate" :error="Boolean(v$.email.$error)" :error-text="v$.email.$errors[0]?.$message")
+      v-input(v-model="email" label="Email" placeholder="yourmail@mail.ru" type="email" :loading="is_loading" @submit="$refs.passwordRef?.focus()" :error="Boolean(v$.email.$error)" :error-text="v$.email.$errors[0]?.$message")
       v-flex(column gap="10")
         v-input.auth__form-password(
           v-model="password"
@@ -19,6 +19,7 @@ auth-layout
           @append-click="is_password_visible = !is_password_visible"
           :loading="is_loading"
           @submit="authenticate"
+          ref="passwordRef"
         )
         v-text(as="router-link" preset="link" :to="{name: 'products'}") Забыли пароль?
 
