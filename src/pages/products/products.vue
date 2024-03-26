@@ -14,5 +14,3 @@ export default defineComponent({
     components: { VProducts, MainLayout }
 })
 </script>
-
-<style lang="sass" scoped src="./products.sass"></style>

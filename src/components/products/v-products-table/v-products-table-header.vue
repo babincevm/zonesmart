@@ -77,8 +77,10 @@ export default defineComponent({
                     ((this as any).selected_products as Set<IProduct['id']>).clear()
                     return
                 }
-                for (const productId of ((this as any).products as Map<IProduct['id'], IProduct>).keys()) {
-                    ((this as any).selected_products as Set<IProduct['id']>).add(productId)
+                for (const product_id of ((this as any).products as Map<IProduct['id'], IProduct>).keys()) {
+                    ((this as any).selected_products as Set<IProduct['id']>).add(product_id);
+                    // @ts-ignore
+                    (this as any).setProductsMinMaxPrice(product_id)
                 }
             }
         },
@@ -116,7 +118,7 @@ export default defineComponent({
         }
     },
     methods: {
-        ...mapActions('products', ['setSelectedProductsMaxPrice', 'setSelectedProductsMinPrice']),
+        ...mapActions('products', ['setSelectedProductsMaxPrice', 'setSelectedProductsMinPrice', 'setProductsMinMaxPrice']),
         deleteSelected() {
             // eslint-disable-next-line no-console
             console.log('Удалены элементы: ', [...this.selected_products as Set<string>])
