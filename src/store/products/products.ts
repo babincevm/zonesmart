@@ -40,42 +40,42 @@ const products: Module<IProductState, IState> = {
             if (error) {
                 return
             }
-            commit('REPLACE_PRODUCTS', data.results)
-            commit('SET_TOTAL_AMOUNT', data.count)
+            commit('REPLACE_PRODUCTS', data)
+            // commit('SET_TOTAL_AMOUNT', data.count)
         },
 
-        setSelectedProductsMaxPrice({ commit, state }: ActionContext<IProductState, IState>, price: number | undefined) {
-            commit('SET_SELECTED_MAX_PRICE', price)
-            for (const selectedProductId of state.selected_products) {
-                commit('SET_CHANGED_DATA_FOR_PRODUCT', {
-                    id: selectedProductId,
-                    field: 'max_price',
-                    value: price
-                } as ICommitProductChangesPayload)
-            }
-        },
-        setSelectedProductsMinPrice({ commit, state }: ActionContext<IProductState, IState>, price: number | undefined) {
-            commit('SET_SELECTED_MIN_PRICE', price)
-            for (const selectedProductId of state.selected_products) {
-                commit('SET_CHANGED_DATA_FOR_PRODUCT', {
-                    id: selectedProductId,
-                    field: 'min_price',
-                    value: price
-                } as ICommitProductChangesPayload)
-            }
-        },
-        setProductsMinMaxPrice({ commit, state }: ActionContext<IProductState, IState>, productId: IProduct['id']) {
-            commit('SET_CHANGED_DATA_FOR_PRODUCT', {
-                id: productId,
-                value: state.selected_products_max_price,
-                field: 'max_price'
-            } as ICommitProductChangesPayload)
-            commit('SET_CHANGED_DATA_FOR_PRODUCT', {
-                id: productId,
-                value: state.selected_products_min_price,
-                field: 'min_price'
-            } as ICommitProductChangesPayload)
-        },
+        // setSelectedProductsMaxPrice({ commit, state }: ActionContext<IProductState, IState>, price: number | undefined) {
+        //     commit('SET_SELECTED_MAX_PRICE', price)
+        //     for (const selectedProductId of state.selected_products) {
+        //         commit('SET_CHANGED_DATA_FOR_PRODUCT', {
+        //             id: selectedProductId,
+        //             field: 'max_price',
+        //             value: price
+        //         } as ICommitProductChangesPayload)
+        //     }
+        // },
+        // setSelectedProductsMinPrice({ commit, state }: ActionContext<IProductState, IState>, price: number | undefined) {
+        //     commit('SET_SELECTED_MIN_PRICE', price)
+        //     for (const selectedProductId of state.selected_products) {
+        //         commit('SET_CHANGED_DATA_FOR_PRODUCT', {
+        //             id: selectedProductId,
+        //             field: 'min_price',
+        //             value: price
+        //         } as ICommitProductChangesPayload)
+        //     }
+        // },
+        // setProductsMinMaxPrice({ commit, state }: ActionContext<IProductState, IState>, productId: IProduct['id']) {
+        //     commit('SET_CHANGED_DATA_FOR_PRODUCT', {
+        //         id: productId,
+        //         value: state.selected_products_max_price,
+        //         field: 'max_price'
+        //     } as ICommitProductChangesPayload)
+        //     commit('SET_CHANGED_DATA_FOR_PRODUCT', {
+        //         id: productId,
+        //         value: state.selected_products_min_price,
+        //         field: 'min_price'
+        //     } as ICommitProductChangesPayload)
+        // },
     },
     mutations: {
         REPLACE_PRODUCTS(state: IProductState, payload: IProduct[]) {

@@ -4,9 +4,9 @@ import { ActionContext, Module } from 'vuex'
 import { router } from '@/routes'
 
 import { IServiceApi } from '@services/api/types'
-import { IAuthData } from '@services/api/Auth/types'
 import { IActionPayload, IState } from '@store/types'
 import { EAuthLoaders, IAuthState } from '@store/auth/types'
+import { IAuthData } from '@services/api/Auth/types'
 
 const auth: Module<IAuthState, IState> = {
     namespaced: true,
@@ -24,23 +24,28 @@ const auth: Module<IAuthState, IState> = {
             { commit }: ActionContext<IAuthState, IState>,
             payload: IActionPayload<IAuthData>
         ): Promise<boolean> => {
-            if (!payload.data) {
-                throw new Error('Auth data is not provided')
-            }
-            commit('LOADER_START', payload.options?.loader_id ?? EAuthLoaders.LOGIN, { root: true })
-            const { Auth } = DIContainer.GetService<IServiceApi>(DISymbols.API)
-            const { error, data } = await Auth.login(
-                payload.data,
-                { signal: payload.options?.signal }
-            )
-            commit('LOADER_END', payload.options?.loader_id ?? EAuthLoaders.LOGIN, { root: true })
-            if (error) {
+            if (payload.data?.email !== 'test@email.com' || payload.data.password !== 'test') {
                 return false
             }
-
-            commit('SET_ACCESS_TOKEN', data.access)
-            commit('SET_REFRESH_TOKEN', data.refresh)
+            {commit('SET_ACCESS_TOKEN', '123')}
             return true
+            // if (!payload.data) {
+            //     throw new Error('Auth data is not provided')
+            // }
+            // commit('LOADER_START', payload.options?.loader_id ?? EAuthLoaders.LOGIN, { root: true })
+            // const { Auth } = DIContainer.GetService<IServiceApi>(DISymbols.API)
+            // const { error, data } = await Auth.login(
+            //     payload.data,
+            //     { signal: payload.options?.signal }
+            // )
+            // commit('LOADER_END', payload.options?.loader_id ?? EAuthLoaders.LOGIN, { root: true })
+            // if (error) {
+            //     return false
+            // }
+            //
+            // commit('SET_ACCESS_TOKEN', data.access)
+            // commit('SET_REFRESH_TOKEN', data.refresh)
+            // return true
         },
         async logout({ commit }: ActionContext<IAuthState, IState>) {
             commit('LOGOUT')

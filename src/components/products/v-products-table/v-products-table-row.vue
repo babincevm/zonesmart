@@ -1,16 +1,16 @@
 <template lang="pug">
 .v-products-table__row.v-products-table__row-item
   v-checkbox(v-model="checked_proxy" )
-  v-image(:src="current_product.images[0]" :alt="current_product.title" :title="current_product.title")
+  v-image(:src="current_product.image" :alt="current_product.title" :title="current_product.title")
 
-  v-flex(v-if="current_product.remote_id" is="button" align="center" justify="flex-start" row @click="copyToClipboard")
+  v-flex(v-if="current_product.id" is="button" align="center" justify="flex-start" row @click="copyToClipboard")
     v-icon(name="link" color="gray" )
-    v-text(preset="basic") {{current_product.remote_id}}
+    v-text(preset="basic") {{current_product.id}}
   v-text(v-else preset="basic")
 
-  v-text(ellipsis nowrap align="left" ) {{current_product.brand_name}}
+  v-text(ellipsis nowrap align="left" ) brand_name
   v-text(ellipsis nowrap align="left" ) {{current_product.title}}
-  v-text(ellipsis nowrap align="left" ) {{current_product.quantity}}
+  v-text(ellipsis nowrap align="left" ) quantity
   v-text(ellipsis nowrap align="left" ) {{formatRub(current_product.price)}}
   v-flex.v-products-table__row-item-input(width="100%" height="100%" justify="center" align="center" )
     v-input(v-model="min_price_proxy" :mask="money_mask" thin placeholder="₽")
@@ -42,7 +42,7 @@ export default defineComponent({
     components: { VImage, VInput, VText, VIcon, VFlex, VCheckbox },
     props: {
         productId: {
-            type: String as PropType<IProduct['id']>,
+            type: Number as PropType<IProduct['id']>,
             required: true
         }
     },
@@ -70,33 +70,33 @@ export default defineComponent({
                     (this as any).selected_products.delete((this as any).$props.productId)
                     return
                 }
-                (this as any).selected_products.add((this as any).$props.productId);
+                (this as any).selected_products.add((this as any).$props.productId)
                 // @ts-ignore
-                (this as any).setProductsMinMaxPrice((this as any).$props.productId)
+                // (this as any).setProductsMinMaxPrice((this as any).$props.productId)
             }
         },
-        min_price_proxy: {
-            get(): boolean {
-                return (this as any).changed_values?.min_price ?? (this as any).current_product.min_price
-            },
-            set(v: boolean) {
-                if ((this as any).changed_values === undefined) {
-                    ((this as any).changed_data as Map<IProduct['id'], TChangedProductData>).set((this as any).$props.productId, { min_price: (this as any).current_product.min_price })
-                }
-                (this as any).changed_values.min_price = v
-            }
-        },
-        max_price_proxy: {
-            get(): boolean {
-                return (this as any).changed_values?.max_price ?? (this as any).current_product.max_price
-            },
-            set(v: boolean) {
-                if ((this as any).changed_values === undefined) {
-                    ((this as any).changed_data as Map<IProduct['id'], TChangedProductData>).set((this as any).$props.productId, { max_price: (this as any).current_product.max_price })
-                }
-                (this as any).changed_values.max_price = v
-            }
-        }
+        // min_price_proxy: {
+        //     get(): boolean {
+        //         return (this as any).changed_values?.min_price ?? (this as any).current_product.min_price
+        //     },
+        //     set(v: boolean) {
+        //         if ((this as any).changed_values === undefined) {
+        //             ((this as any).changed_data as Map<IProduct['id'], TChangedProductData>).set((this as any).$props.productId, { min_price: (this as any).current_product.min_price })
+        //         }
+        //         (this as any).changed_values.min_price = v
+        //     }
+        // },
+        // max_price_proxy: {
+        //     get(): boolean {
+        //         return (this as any).changed_values?.max_price ?? (this as any).current_product.max_price
+        //     },
+        //     set(v: boolean) {
+        //         if ((this as any).changed_values === undefined) {
+        //             ((this as any).changed_data as Map<IProduct['id'], TChangedProductData>).set((this as any).$props.productId, { max_price: (this as any).current_product.max_price })
+        //         }
+        //         (this as any).changed_values.max_price = v
+        //     }
+        // }
     },
     methods: {
         ...mapActions('products', ['setProductsMinMaxPrice']),

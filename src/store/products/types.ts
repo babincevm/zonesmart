@@ -14,7 +14,7 @@ export interface IProductState {
   selected_products_min_price: number | undefined;
 }
 
-export type TChangedProductData = Partial<Pick<IProduct, 'min_price' | 'max_price'>>
+export type TChangedProductData = Partial<Pick<IProduct, 'price'>>
 export type TFetchProductsPayload = IActionPayload<never, TStoreWithPagination>;
 
 export interface ICommitProductChangesPayload {

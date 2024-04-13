@@ -1,7 +1,5 @@
-import store from '@/store'
-
 import { IProduct, IProductsAPI } from '@services/api/Products/types'
-import { IPaginated, IRequestOptions, IResponse, TWithPagination } from '@services/api/Base/types'
+import { IRequestOptions, IResponse, TWithPagination } from '@services/api/Base/types'
 
 import { Base } from '@services/api/Base/Base'
 
@@ -10,17 +8,17 @@ export class Products extends Base implements IProductsAPI {
         super()
     }
 
-    async fetchProducts(options: IRequestOptions<TWithPagination> = {}): Promise<IResponse<IPaginated<IProduct[]>>> {
-        const token = store.state.auth.access
+    async fetchProducts(options: IRequestOptions<TWithPagination> = {}): Promise<IResponse<IProduct[]>> {
+    // const token = store.state.auth.access
 
-        return this.handle<IPaginated<IProduct[]>>(
+        return this.handle<IProduct[]>(
             this.axios_instance.get(
-                '/product/',
+                'https://fakestoreapi.com/products',
                 {
                     signal: options.signal,
-                    headers: {
-                        'authorization': `JWT ${token}`
-                    },
+                    // headers: {
+                    //     'authorization': `JWT ${token}`
+                    // },
                     params: {
                         limit: options.limit,
                         offset: options.offset
